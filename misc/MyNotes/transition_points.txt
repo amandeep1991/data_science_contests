@@ -1,0 +1,32 @@
+8 minutes r _ s _ m _
+6 mistakes _ _ _ _ _ _
+
+Points to Ponder:
+1. Don't be explorer but detective
+2. Analytics = Data Science + Decision Science (Inquiry to insights --> Insignts to Impct)
+3. BADIR (structured approach from data to decisions)
+	(Business Question, Analysis Plan (to assume hypothesis) , Data Collection, Derive Insights, Recommendations)
+
+7 types of analysis:
+       1. Aggregate Analysis 				(Descriptive analysis, profiling, compaign analysis, winner-loser analysis).
+       2. Correlation Analysis 				(Pre-post, test-control, drivers, dashboards)
+       3. Trend Analysis: 					(Analyze trends of sales, revenues and identify breaks in trend and segments/drivers over a period of time)
+       4. Sizing/Estimation: 				(Business case with limited internal data; dependence on external data/assumptions)
+       5. Predictive Analysis/Time series:	(Analyze current/historical facts to make predictions about future events. Eg- drivers of conversion, drivers of consumer engagement, forecasting)
+       6. Segmentation:						(Clustering-Grouping customers/products in meaningful segments to enable targetting/customization)
+       7. Customer Life-Cycle:				(Defining customer process stages from consideration through purchase to use)
+
+10 top google q related to business:-
+	1. Marketing Funnel: Bring more future customers to door in the most cost-effective manner. (Analysis - #1, #2, #6 above)
+	2. Marketing Funnel: Convert more of those who come to the door into customers. (Analysis - #2, #5 above)
+	3. Marketing Funnel: Keep the current customers buying. (Analysis - #1, #2, #5, #6 above)
+	4. Product/BU: Identify new products and features for the various customer segments- understand consumer needs per segment and deliver targeted products.
+	5. Product/BU: Prioritize which product features to include. This can be determined by understanding the expected business impact.
+	6. Product/BU: Optimize the customer experience to increase the product usage by motivating customers to take an action like buying a product or signing up.
+	7. Customer service / Operations: Optimization of most precious resources - Call routing to agents by customer segmentation to optimize metrics like FCR (First Call Resolution), NPS (Net Promotor Score),, thereby cost.
+	8. Customer service / Operations: Satisfactorily address issues of customers who are calling. This in turn means understanding top issues and drivers of resolution. (Correlation & aggregate)
+	9. Customer service / Operations: Who are the most valuable customers? What are the characteristics of each customer segment?
+   10. Customer service / Operations: Divert customers to self-serve before calling to reduce customer service overhead.
+
+BADIR
+BEDIR

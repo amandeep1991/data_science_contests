@@ -1,0 +1,133 @@
+
+
+python django-admin.py startproject kirr
+python C:\ML\installed_tools\anaconda3\envs\trydjango110\Scripts\django-admin.py startproject kirr
+
+cd kirr\
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+
+
+Rename kirr (outer) to src.
+
+
+Go inside src and run following commands:
+	python manage.py createsuperuser
+		amandeep
+		amandeep.kumar@orange.com
+		nffj9828
+
+	python manage.py runserver
+	Open http://127.0.0.1:8000/
+	Open http://127.0.0.1:8000/admin
+
+Create your own app:
+	python manage.py startapp shortener
+
+Open shortener/models.py and add following lines of code: (Can simply search for django model field types for different types of fields like CharField etc.)
+	class kirrURL(models.Model):
+	url = models.CharField(max_length=220,)
+	def __str__(self):
+		return str(self.url)
+	# For python 2
+	def __unicode__(self):
+		return str(self.url)
+
+Open shortener/admin, and add following lines of code: (to register the models)
+	from .models import KirrURL
+	admin.site.register(KirrURL)
+
+Open ./src/kirr/settings.py and add following lines in list of INSTALLED_APPS:
+	# custom apps
+    'shortener',
+
+Run following commands:
+	python manage.py makemigrations
+	pythom manage.py migrate
+	python manage.py runserver
+
+
+Now make changes to the model:
+	shortcode = models.CharField()
+	Now run python manage.py makemigrations, which will throw error that maxlength is manadatory parameter:
+	ERRORS:
+		shortner.KirrURL.shortcode: (fields.E120) CharFields must define a 'max_length' attribute.
+
+	shortcode = models.CharField(max_length=15)
+	Now run python manage.py makemigrations, which will throw error what to do with other fields:
+	ERRORS (ALSO GIVE OPTION TO CORRECT):
+		You are trying to add a non-nullable field 'shortcode' to kirrurl without a default; we can't do that (the database needs something to populate existing rows). Please select option to select.
+
+	We need to somehow tell django that we can either make it as nullable in db or keep it blank or provide a default value, so we are going to provide a default value to it: (unique = True to make it unique)
+	shortcode = models.CharField(max_length=15, default='ABCD', unique=True)
+
+
+
+
+Handling migration failures:
+	updated 		= models.DateTimeField(auto_now=True)
+	timestamp 		= models.DateTimeField(auto_now_add=True)
+	empty_timestamp = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+	Now there would be a lot of migration errors, so one option is to delete all files under shortner/migrations folder (EXCEPT __init__.py) and then also delete db.sqlite3 (now we need to create the super-user again).
+
+	python manage.py makemigrations
+	python manage.py migrate
+	python manage.py createsuperuser
+	amandeep
+	amandeep.kumar@orange.com
+	nffj9828
+	nffj9828
+	python manage.py runserver
+
+To run fake migrations try following command:
+	python manage.py migrate shortner --fake
+
+
+Saving in the python shell (with django): DIRECTLY INTERACTING WITH DB, just to avoid few javascript validation
+	python manage.py shell (this would be like of python shell just with django stuff, can be used to play with the django app)
+
+	>>> from shortner.models import KirrURL
+	>>> from shortner.models import KirrURL
+	>>> KirrURL.objects.all()              
+	<QuerySet [<KirrURL: www.google.com>]> 
+
+
+
+	>>> new_url = KirrURL()                  
+	>>> new_url.url = 'reviewsandnotes.space'
+	>>> new_url.save() 
+	IntegrityError: NOT NULL constraint failed: shortner_kirrurl.empty_timestamp
+
+	>>> import datetime.datetime
+	>>> new_url.empty_timestamp = datetime.now()                      
+	>>> new_url.shortcode='dfdfd'                                               
+	>>> new_url.save()                                                          
+	>>> KirrURL.objects.all()                                                   
+	<QuerySet [<KirrURL: www.google.com>, <KirrURL: reviewsandnotes.space>]>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GOLDER RULE: if you update any app or it's model, please run following 2 commands to make it all the new changes in the model inline with django db:-
+	python manage.py makemigrations
+	python manage.py migrate

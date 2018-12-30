@@ -1,0 +1,129 @@
+node -v
+npm -v
+npm help
+npm install -h
+npm help-search update #text search in whole documentation
+npm help update # open browser for update command documentation
+
+
+package.json:
+	Manage dependencies
+	Build scripts
+
+	How to create:-
+		Don't need to write by our own hands, just use:
+			npm init
+				asks few questions with default answers (just press enter for default answers selection)
+			npm init --yes
+				takes default answers for all question without prompt
+
+	Change default values for different properties like author & license etc:
+		npm config set init-author-name "Amandeep"
+		npm config set init-license "OpenSource"
+
+	Read default values from command-prompt:
+		npm config get init-author-name    ---> Returns Amandeep
+		npm get init-author-name    ---> Returns Amandeep (config is optional)
+
+	Delete default values from command prompt:
+		npm config delete init-author-name "Amandeep"
+
+	Want to install a package locally to a project:
+		Open the directory in the command prompt where package.json exists and
+		Run:
+			npm install moment (moment is the package name)
+		Output:
+			node_modules (directory)
+						--momemt (directory)
+		CATCH: It didn't make any changes in package.json file
+
+			npm install moment --save
+			npm install moment --save-dev (for packages which are used just for dev purposes)
+
+
+			npm uninstall moment        	(local package names, but no change in package.json file)
+			npm uninstall moment --save 	(local package names)
+			npm uninstall moment --save-dev (local package names)
+
+	To install globally: (Generally install at \AppData\Roaming\npm\node_modules)
+			npm install moment -g (no directory in node_modules and no change/addition in package.json)
+
+	To uninstall globally:
+			npm uninstall moment -g
+			npm remove moment -g
+			npm rm moment -g
+			npm un moment -g
+	
+	To see the list of packages installed locally: 
+			npm list (also shows transitive dependencies)
+			npm list --depth 1 (shows just immediate children of the modules mentioned in package.json)
+			npm list --depth 0 (just the packages/modules in package.json)
+
+	To see list of packages installed globally:
+			npm list --global true
+			npm list --global true --depth 0
+
+
+Versioning in npm:
+	If version is not mentioned while installing the packages, it install the Latest Table Release (LTR)
+		major.minor.patch [versioning concept]
+			major - breaking change
+
+		npm install lodash@3.3.0
+		npm install lodash@3.3 		(latest patch version available)
+		npm install lodash@4 		(latest minor & patch version available for major version 4)
+
+
+Github:
+	In readMe file, it asks for npm install, which read package.json file and install all the packages mentioned in that file in the local project.
+	"^4.14.1" means latest minor and patch version with major version 4.
+	"~4.14.1" means latest patch version with major version 4 and minor version 14.
+	"4.14.1" means specific version 4.14.1.
+	"*" means latest version available.
+
+
+Update package:
+	npm update lodash --save 				(update lodash package)
+	npm update --dev --save-dev 			(update all dev dependencies)
+	npm update 								(update all local dev and other dependencies)
+	npm update -g							(update global)
+	npm update -g gulp						(update global)
+	npm install npm@latest -g 				(update global)
+
+
+Pruning:
+	npm list --depth 0 => label few packages as extraneous which means they are installed but not saved in package.json file
+
+	To uninstall such packages which you initially thought to just try but actually not required, use prune command:
+		npm prune
+
+Shortcuts:
+	npm init -y (create package.json)
+
+	npm i lodash 		(install)
+	npm i lodash -S 	(install and save)
+	npm i lodash -D 	(install and save as dev dependency)
+	npm -v
+
+	Others can be found at:
+		docs.npmjs.com/misc/config
+
+Scripts:
+	app.js
+		To run the file, use:
+			node app.js
+
+	npm start (kind of phase start, to map the script do following changes in the package.json):: CODE SNIPPET
+		"scripts":{
+			"start": "node app.js"
+		}
+	sOMETHINg similar happens in ANGULAR code.
+
+
+Install the Angular CLI globally:
+	npm install -g @angular/cli
+
+	
+
+
+

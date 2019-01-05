@@ -25,7 +25,7 @@ SECRET_KEY = '33yy2no8%g7g^25chxese)!uz&11yvqru_z86a!#g&i0t3w1f)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.reviewsandnotes.space']
 
 
 # Application definition
@@ -40,9 +40,13 @@ INSTALLED_APPS = [
 
     # custom apps
     'shortner',
+
+    # third-party
+    'django_hosts',
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,9 +54,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'kirr.urls'
+ROOT_HOSTCONF = 'kirr.hosts'
+DEFAULT_HOST = 'www_name'
+DEFAULT_REDIRECT_URL = 'http://www.reviewsandnotes.space:8000'
 
 TEMPLATES = [
     {
@@ -115,6 +123,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SHORT_CODE_MAX_LENGTH = 15
 
 
 # Static files (CSS, JavaScript, Images)

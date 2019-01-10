@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'shortner',
+    'analytics',
 
     # third-party
     'django_hosts',
@@ -59,13 +60,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kirr.urls'
 ROOT_HOSTCONF = 'kirr.hosts'
-DEFAULT_HOST = 'www_name'
+DEFAULT_HOST = 'www_name_123'
 DEFAULT_REDIRECT_URL = 'http://www.reviewsandnotes.space:8000'
+PARENT_HOST = 'reviewsandnotes.space:8000'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

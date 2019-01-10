@@ -2,7 +2,7 @@ from django.conf import settings
 from django_hosts import patterns, host
 
 host_patterns = patterns('',
-    host(r'www', settings.ROOT_URLCONF, name='www_name'),
+    host(r'www', settings.ROOT_URLCONF, name='www_name_123'),
     host(r'(?!www).*', 'kirr.hostsconf.urls', name='wildcard'),
 )
 

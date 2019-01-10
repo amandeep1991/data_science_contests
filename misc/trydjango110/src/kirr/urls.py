@@ -13,15 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+# from django.conf.urls import url
+# from django.contrib import admin
+# from shortner.views import KirrClassBasedView, kirr_function_based_view
+
+# urlpatterns = [
+#     url(r'^admin/', admin.site.urls), # This is what we have typed as admin as suffix post simple url shown on server start on console
+#     # url(r'^view-1/$', kirr_function_based_view),
+#     # url(r'^view-2/$', KirrClassBasedView.as_view()),
+
+#     url(r'^a/(?P<shortcode>[\w-]+){6,15}/$', kirr_function_based_view),
+#     url(r'^b/(?P<shortcode>[\w-]+)/$', KirrClassBasedView.as_view()),
+# ]
+
+
 from django.conf.urls import url
 from django.contrib import admin
-from shortner.views import KirrClassBasedView, kirr_function_based_view
+from shortner.views import KirrClassBasedView, HomeView, URLRedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls), # This is what we have typed as admin as suffix post simple url shown on server start on console
-    # url(r'^view-1/$', kirr_function_based_view),
-    # url(r'^view-2/$', KirrClassBasedView.as_view()),
-
-    url(r'^a/(?P<shortcode>[\w-]+){6,15}/$', kirr_function_based_view),
-    url(r'^b/(?P<shortcode>[\w-]+)/$', KirrClassBasedView.as_view()),
+    url(r'^$', HomeView.as_view()),
+    # url(r'^(?P<shortcode>[\w-]{6,15})/$', KirrClassBasedView.as_view(), 'shortcode_url'),
+    url(r'^(?P<shortcode>[\w-]{6,15})/$', URLRedirectView.as_view(), 'shortcode_url'),
 ]

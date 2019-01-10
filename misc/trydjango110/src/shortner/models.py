@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db import models
 from datetime import datetime
+from django_hosts import reverse
 
 from .utils import create_shortcode
 
@@ -66,3 +67,15 @@ class KirrURL(models.Model):
 
 	# class Meta:
 	# 	ordering = '-id'
+
+	def get_shortcode(self):
+		# It works just fine but it's hard coding, better use django-hosts reverse method
+		hardcoded_url_return = "http://www.reviewsandnotes.space:8000/{shortcode}".format(shortcode=self.shortcode)
+		url_return = hardcoded_url_return
+
+		# TODO: Reverse functionalizty needs to be implemented (It's not working right now)!
+		# generalized_url_return = reverse('shortcode_url', kwargs={'shortcode': self.shortcode})
+		# generalized_url_return = reverse('shortcode_url', host='www_name_123', port='8000', scheme='http', kwargs={'shortcode': self.shortcode})
+		# url_return = generalized_url_return
+
+		return url_return
